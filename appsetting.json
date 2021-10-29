@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+      "OwnerContext": "Server=bitsql.wctc.edu;Database=BlogsConsole_12090_xxxxxxx;User ID=xxxxxxxxx;Password=xxxxxxxxx;" 
+    }
+  }
