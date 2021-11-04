@@ -1,5 +1,6 @@
 ﻿using System;
 using EFTutorial.Models;
+using System.Linq;
 
 namespace EFTutorial
 {
@@ -7,28 +8,17 @@ namespace EFTutorial
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Enter your Post title");
-            var postTitle = Console.ReadLine();
-
-            var post = new Post();
-            post.Title = postTitle;
-            post.BlogId = 1;
-
-
-            using (var db = new BlogContext())
+            using (var db = new BlogContext()) 
             {
-           db.Posts.Add(post);
-           db.SaveChanges();
+                var blog = db.Blogs.Where(x=>x.BlogId == 1).FirstOrDefault();
 
+                System.Console.WriteLine($"Posts for Blog {blog.Name}");
+
+                foreach (var post in blog.Posts) {
+                    System.Console.WriteLine($"\tPost {post.PostId} {post.Title}");
+                }
             }
-
-            System.Console.WriteLine("Enter your Blog name");
-            var blogName = Console.ReadLine();
-
-            var blog = new Blog();
-            blog.Name = blogName;
             
-        
         }
     }
 }
